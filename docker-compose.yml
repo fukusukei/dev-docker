@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  dev:
+    build: 
+      context: dev
+      args:
+        - HTTP_PROXY=${HTTP_PROXY}
+        - HTTPS_PROXY=${HTTP_PROXY}
+        - USERNAME=${USERNAME}
+        - GROUPNAME=${GROUPNAME}
+        - USERID=${USERID}
+        - GROUPID=${GROUPID}
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./volumes/${USERNAME}:/home/${USERNAME}
